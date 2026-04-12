@@ -1,6 +1,19 @@
 const menuBtn=document.querySelector('.menu');
 const siteNav=document.getElementById('site-nav');
-if(menuBtn&&siteNav){menuBtn.addEventListener('click',()=>{const open=siteNav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));});siteNav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{siteNav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');}));}
+if(menuBtn&&siteNav){
+  menuBtn.addEventListener('click',()=>{
+    const open=siteNav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded',String(open));
+  });
+
+  siteNav.addEventListener('click',e=>{
+    if(e.target.closest('a')){
+      siteNav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded','false');
+    }
+  });
+}
+
 const SHEET2API_URL='https://sheet2api.com/v1/A80k3nstQtGT/addmission-info';
 
 function bindWhatsAppLinks(){
@@ -107,4 +120,117 @@ async function submitForm(event){
 }
 
 bindWhatsAppLinks();
-document.getElementById('enquiry-form').addEventListener('submit',submitForm);
+
+const enquiryForm=document.getElementById('enquiry-form');
+if(enquiryForm){
+  enquiryForm.addEventListener('submit',submitForm);
+}
+
+// Scroll-triggered animations for course-cards and feature-boxes
+const observerOptions={
+  root:null,
+  rootMargin:'0px',
+  threshold:0.1
+};
+
+const observer=new IntersectionObserver((entries,observerInstance)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observerInstance.unobserve(entry.target);
+    }
+  });
+},observerOptions);
+
+document.querySelectorAll('.course, .review, .list-item, .contact-item, .stat, .image-card, .support-card, .feature-box').forEach(element=>{
+  observer.observe(element);
+});
+
+// ===== BRANCH CARDS SCROLL ANIMATION =====
+const branchObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, i * 120);
+      branchObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.branch-card')
+  .forEach(card => branchObserver.observe(card));
+
+// Active nav highlight on scroll
+const navLinks = document.querySelectorAll('.site-nav a[href^="#"]');
+const allSections = document.querySelectorAll('section[id]');
+const navObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('nav-active'));
+      const a = document.querySelector(`.site-nav a[href="#${e.target.id}"]`);
+      if (a) a.classList.add('nav-active');
+    }
+  });
+}, { threshold: 0.35 });
+allSections.forEach(s => navObserver.observe(s));
+
+// Counter animation for stats
+document.querySelectorAll('.stat strong').forEach(el => {
+  const raw = el.textContent.trim();
+  const target = parseInt(raw);
+  if (!target) return;
+  const suffix = raw.replace(/[0-9]/g, '');
+  new IntersectionObserver(([entry], obs) => {
+    if (!entry.isIntersecting) return;
+    obs.unobserve(el);
+    let n = 0;
+    const step = Math.ceil(target / 50);
+    const timer = setInterval(() => {
+      n = Math.min(n + step, target);
+      el.textContent = n + suffix;
+      if (n >= target) clearInterval(timer);
+    }, 30);
+  }, { threshold: 0.6 }).observe(el);
+});
+
+// Back to top
+const topBtn = document.getElementById('back-to-top');
+if (topBtn) {
+  window.addEventListener('scroll', () => {
+    topBtn.style.display = window.scrollY > 400 ? 'flex' : 'none';
+  });
+  topBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+// Course details toggle for click or touch
+document.querySelectorAll('.course').forEach(card => {
+  card.addEventListener('click', event => {
+    if (event.target.closest('a, button')) return;
+    card.classList.toggle('is-open');
+  });
+});
+
+// Course filter buttons
+document.querySelectorAll('.cf-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.cf-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter=btn.dataset.filter;
+    document.querySelectorAll('.course').forEach(card=>{
+      const show=filter==='all'||card.dataset.level===filter;
+      card.style.transition='opacity .3s ease, transform .3s ease';
+      if(show){
+        card.style.display='flex';
+        card.style.flexDirection='column';
+        setTimeout(()=>{card.style.opacity='1';card.style.transform='translateY(0)'},10);
+      } else {
+        card.style.opacity='0';
+        card.style.transform='translateY(10px)';
+        setTimeout(()=>{card.style.display='none'},300);
+      }
+    });
+  });
+});
