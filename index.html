@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="google-site-verification" content="8bf0d3d0227971b7" />
 <title>LGES Computer Classes | Job-Oriented Training | Rajasthan</title>
-<link rel="icon" type="image/jpeg" href="logo1.jpeg" />
-<link rel="apple-touch-icon" href="logo1.jpeg" />
+<link rel="icon" type="image/png" href="logo1.png" />
+<link rel="apple-touch-icon" href="logo1.png" />
 <meta name="description" content="LGES Computer Classes — Rajasthan's trusted computer institute with 4 branches in Jaipur and Ajmer. Web Development, Python, Tally, Graphic Design, DCA, AI courses. Government recognized certificates. Flexible batches." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,7 +18,7 @@
     <div class="topbar">4 Branches in Rajasthan | 📞 +91-9352621943 | 📧 lgescomputerclasses@gmail.com</div>
     <div class="navbox">
       <a class="brand" href="#home" aria-label="LGES home">
-        <img src="logo1.jpeg" alt="Lakshmi Group of Education Society logo" />
+        <img src="logo1.png" alt="Lakshmi Group of Education Society logo" />
         <div><strong>LGES Computer Classes</strong><span>Lakshmi Group of Education Society | Rajasthan</span></div>
       </a>
       <button class="menu" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -27,9 +26,9 @@
         <a href="#home">Home</a>
         <a href="#programs">Programs</a>
         <a href="#about">About</a>
-        <a href="#branches">Branches</a>
         <a href="#admissions">Admissions</a>
         <a href="#reviews">Reviews</a>
+        <a href="#branches">Branches</a>
         <a href="#contact">Contact</a>
         <a class="cta" href="#admissions">Apply Now</a>
       </nav>
@@ -57,7 +56,7 @@
         <div class="visual" aria-hidden="true">
           <div class="visual-main">
             <div class="seal">
-              <img src="logo1.jpeg" alt="" />
+              <img src="logo1.png" alt="" />
               <div>
                 <span>Why students choose LGES</span>
                 <h2>Job-oriented training for a stronger digital future.</h2>
@@ -87,7 +86,7 @@
       <div class="head">
         <div class="kicker">Popular programs</div>
         <h2>Courses designed for real skills and confident outcomes.</h2>
-        <p>Every course card now feels part of one LGES system: clear, premium, and easy to scan on desktop and mobile.</p>
+        <p>Practical, job-ready programs designed for students, job seekers, and working professionals across Rajasthan.</p>
       </div>
             <div class="course-filters">
         <button class="cf-btn active" data-filter="all">All Courses</button>
@@ -318,8 +317,8 @@
   <section class="section about" id="about">
     <div class="container about-grid">
       <div class="about-copy">
-        <div class="head left"><div class="kicker">About LGES</div><h2>A more trusted, academic, and memorable web presence for the institute.</h2></div>
-        <p>LGES Computer Classes is part of the Lakshmi Group of Education Society and has served students across Rajasthan — with branches in Jaipur and Ajmer — for over a decade through practical teaching, approachable faculty, and strong community trust. This redesign reflects that reputation visually.</p>
+        <div class="head left"><div class="kicker">About LGES</div><h2>Trusted computer education across Rajasthan since 2015.</h2></div>
+        <p>LGES Computer Classes is part of the Lakshmi Group of Education Society and has served students across Rajasthan — with branches in Jaipur and Ajmer — for over a decade through practical teaching, approachable faculty, and strong community trust.</p>
         <p>Our courses are practical, our faculty are experienced, and our certificates are government-recognized. Whether you are a school student, a job seeker, or a working professional — LGES has a program and a batch time that fits your life.</p>
         <div class="list">
           <div class="list-item"><b>01</b><div><strong>Expert faculty with industry experience</strong><span>Our teachers bring real-world skills into every classroom — guiding students from basics to job-ready confidence.</span></div></div>
@@ -369,9 +368,46 @@
         <div class="fields">
           <div class="field"><label for="fname">First name</label><input id="fname" type="text" placeholder="Rahul" required /></div>
           <div class="field"><label for="lname">Last name</label><input id="lname" type="text" placeholder="Sharma" /></div>
-          <div class="field"><label for="phone">Mobile number</label><input id="phone" type="tel" placeholder="+91 99999 00000" required /></div>
+          <div class="field">
+            <label for="phone">Mobile number</label>
+            <input
+              id="phone"
+              type="tel"
+              placeholder="10-digit mobile number"
+              pattern="[6-9][0-9]{9}"
+              maxlength="10"
+              inputmode="numeric"
+              title="Enter a valid 10-digit Indian mobile number"
+              required />
+          </div>
           <div class="field"><label for="email">Email address</label><input id="email" type="email" placeholder="rahul@email.com" /></div>
-          <div class="field"><label for="course">Preferred course</label><select id="course" required><option value="">Select a course</option><option>Web Development</option><option>MS Office and Tally</option><option>Python Programming</option><option>Graphic Design</option><option>DCA / ADCA</option><option>AI and Data Basics</option></select></div>
+          <div class="field">
+            <label for="course">Preferred course</label>
+            <input
+              id="course"
+              type="text"
+              list="course-list"
+              placeholder="Type or select a course"
+              autocomplete="off"
+              required />
+            <datalist id="course-list">
+              <option value="Accounting with Tally">
+              <option value="Graphic Designing">
+              <option value="Ethical Hacking">
+              <option value="Full Stack Development">
+              <option value="Digital Marketing + AI">
+              <option value="RS-CIT (RKCL)">
+              <option value="Animation">
+              <option value="Programming (Python, Java, C/C++, JS)">
+              <option value="Data Science">
+              <option value="Web Development">
+              <option value="MS Office + Advanced Excel">
+              <option value="DCA / ADCA">
+              <option value="AI and Data Basics">
+              <option value="MIS (Management Information System)">
+              <option value="Photoshop">
+            </datalist>
+          </div>
           <div class="field"><label for="batch">Preferred batch</label><select id="batch"><option value="">Select timing</option><option>Morning (9 AM to 11 AM)</option><option>Afternoon (12 PM to 2 PM)</option><option>Evening (4 PM to 6 PM)</option><option>Evening Plus (6 PM to 8 PM)</option></select></div>
           <div class="field full"><label for="message">What do you want help with?</label><textarea id="message" placeholder="Tell us if you are a student, job seeker, or want guidance on which course to choose."></textarea></div>
         </div>
@@ -387,9 +423,9 @@
       <div class="review-shell">
         <aside class="review-side"><strong>4.9</strong><div class="stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div><p>Based on strong student feedback across Rajasthan, practical teaching quality, and the confidence learners feel after course completion.</p></aside>
         <div class="review-grid">
-          <article class="review"><div class="review-top"><div class="review-avatar avatar-ps">PS</div><div><strong>Pooja Sharma</strong><span class="review-role">College student, Rajasthan</span></div></div><div class="stars review-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div><p class="review-text">The teachers explain concepts patiently and the new website now reflects that same confidence. I joined the web course and built my first project within weeks.</p><span class="review-tag">Web Development</span></article>
+          <article class="review"><div class="review-top"><div class="review-avatar avatar-ps">PS</div><div><strong>Pooja Sharma</strong><span class="review-role">College student, Rajasthan</span></div></div><div class="stars review-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div><p class="review-text">The teachers explain concepts patiently and make every topic easy to understand. I joined the web development course and built my first real project within weeks.</p><span class="review-tag">Web Development</span></article>
           <article class="review"><div class="review-top"><div class="review-avatar avatar-sk">SK</div><div><strong>Suresh Kumar</strong><span class="review-role">Government employee, Rajasthan</span></div></div><div class="stars review-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div><p class="review-text">Reasonable fees, clear practical lessons, and helpful staff. The Python track felt useful immediately and the institute communication was always supportive.</p><span class="review-tag">Python Programming</span></article>
-          <article class="review"><div class="review-top"><div class="review-avatar avatar-np">NP</div><div><strong>Neha Patel</strong><span class="review-role">Freelance designer, Rajasthan</span></div></div><div class="stars review-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div><p class="review-text">The graphic design course helped me move into freelance work. The training was practical and this redesign gives the institute a much more premium online identity.</p><span class="review-tag">Graphic Design</span></article>
+          <article class="review"><div class="review-top"><div class="review-avatar avatar-np">NP</div><div><strong>Neha Patel</strong><span class="review-role">Freelance designer, Rajasthan</span></div></div><div class="stars review-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div><p class="review-text">The graphic design course helped me move into full-time freelance work. The training was genuinely practical and career-changing.</p><span class="review-tag">Graphic Design</span></article>
         </div>
       </div>
     </div>
@@ -541,7 +577,7 @@
   </section>
 
     <section class="section about" id="contact">
-    <div class="container info-grid">
+    <div class="container info-grid contact-only">
       <div class="plain">
         <div class="head left"><div class="kicker">Contact LGES</div><h2>Visit Our Head Office</h2><p>Contact our Kanta Road Head Office in Jaipur or visit any of our 4 branches across Rajasthan.</p></div>
         <div class="contact-list">
@@ -552,23 +588,6 @@
           <div class="contact-item"><div class="contact-badge">HRS</div><div class="contact-copy"><strong>Working hours</strong><p>Monday to Saturday: 8 AM to 8 PM<br />Sunday: Available on request</p></div></div>
         </div>
         <div class="contact-actions"><a class="btn btn-primary" href="tel:+919352621943">Call Now</a><a class="btn btn-light" href="mailto:lgescomputerclasses@gmail.com">Email Institute</a><a class="btn btn-whatsapp js-whatsapp-link" href="https://wa.me/918954923427?text=Hello%20LGES%20Computer%20Classes%2C%20I%20want%20course%20information." data-whatsapp-phone="918954923427" data-whatsapp-text="Hello LGES Computer Classes, I want course information." target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
-      </div>
-      <div class="plain location map-panel">
-        <div class="map-frame-wrap">
-          <iframe
-            src="https://www.google.com/maps?q=26.940385746321407,75.74312902424305&z=17&output=embed"
-            title="LGES Computer Classes Head Office on Google Maps"
-            loading="lazy"
-            allowfullscreen=""
-            referrerpolicy="no-referrer-when-downgrade"
-            style="border:2px solid #f1b63d;border-radius:12px;width:100%;height:350px;">
-          </iframe>
-        </div>
-        <div class="map-actions">
-          <a class="btn btn-primary map-directions"
-             href="https://www.google.com/maps/dir/?api=1&destination=26.940385746321407,75.74312902424305"
-             target="_blank" rel="noopener noreferrer">Get Directions</a>
-        </div>
       </div>
     </div>
   </section>
@@ -584,9 +603,9 @@
         <a href="#home">Home</a>
         <a href="#programs">Programs</a>
         <a href="#about">About</a>
-        <a href="#branches">Branches</a>
         <a href="#admissions">Admissions</a>
         <a href="#reviews">Reviews</a>
+        <a href="#branches">Branches</a>
         <a href="#contact">Contact</a>
       </div>
     </div>

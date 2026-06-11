@@ -73,6 +73,15 @@ async function submitForm(event){
   if(missing){
     msg.style.color='#d74430';
     msg.textContent='Please fill in your first name, phone number, and preferred course.';
+    msg.classList.add('visible');
+    return;
+  }
+
+  const phoneRaw=document.getElementById('phone').value.trim().replace(/\D/g,'');
+  if(!/^[6-9][0-9]{9}$/.test(phoneRaw)){
+    msg.style.color='#d74430';
+    msg.textContent='Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.';
+    msg.classList.add('visible');
     return;
   }
 
@@ -82,7 +91,7 @@ async function submitForm(event){
   const payload={
     Name:[firstName,lastName].filter(Boolean).join(' '),
     Email:document.getElementById('email').value.trim(),
-    Phone:document.getElementById('phone').value.trim(),
+    Phone:document.getElementById('phone').value.trim().replace(/\D/g,''),
     Course:document.getElementById('course').value.trim(),
     Batch:document.getElementById('batch').value.trim(),
     Date:now.toLocaleDateString('en-CA'),
@@ -91,6 +100,7 @@ async function submitForm(event){
 
   msg.style.color='#605a78';
   msg.textContent='Submitting your enquiry...';
+  msg.classList.add('visible');
   submitBtn.disabled=true;
 
   try{
@@ -109,10 +119,13 @@ async function submitForm(event){
 
     msg.style.color='#3f9a4a';
     msg.textContent='Admission enquiry submitted successfully. The LGES team can contact you within 24 hours.';
+    msg.classList.add('visible');
+    setTimeout(()=>{msg.classList.remove('visible');msg.textContent='';},6000);
     form.reset();
   }catch(error){
     msg.style.color='#d74430';
     msg.textContent='We could not submit your enquiry right now. Please try again in a moment.';
+    msg.classList.add('visible');
     console.error('Form submission failed:',error);
   }finally{
     submitBtn.disabled=false;
@@ -234,3 +247,11 @@ document.querySelectorAll('.cf-btn').forEach(btn=>{
     });
   });
 });
+
+// Live phone input: digits only, max 10
+const phoneInput=document.getElementById('phone');
+if(phoneInput){
+  phoneInput.addEventListener('input',()=>{
+    phoneInput.value=phoneInput.value.replace(/\D/g,'').slice(0,10);
+  });
+}
